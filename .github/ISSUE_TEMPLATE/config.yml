@@ -1,0 +1,11 @@
+# This repository only packages the Vericto CLI for Homebrew. Problems with the CLI
+# itself belong in vericto-cli; a formula problem (install, checksum, upgrade) can
+# be opened here as a blank issue.
+blank_issues_enabled: true
+contact_links:
+  - name: Report a bug or request a feature in the Vericto CLI
+    url: https://github.com/vericto/vericto-cli/issues/new/choose
+    about: The CLI's code, flags and output live in vericto-cli.
+  - name: Report a security vulnerability
+    url: https://github.com/vericto/homebrew-tap/security/advisories/new
+    about: Report it privately instead of in a public issue. See SECURITY.md.
