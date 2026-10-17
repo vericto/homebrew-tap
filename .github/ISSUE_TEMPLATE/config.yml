@@ -7,5 +7,5 @@ contact_links:
     url: https://github.com/vericto/vericto-cli/issues/new/choose
     about: The CLI's code, flags and output live in vericto-cli.
   - name: Report a security vulnerability
-    url: https://github.com/vericto/homebrew-tap/security/advisories/new
-    about: Report it privately instead of in a public issue. See SECURITY.md.
+    url: https://github.com/vericto/vericto-cli/security/advisories/new
+    about: Report it privately (or email security@vericto.com) instead of in a public issue. See SECURITY.md.
