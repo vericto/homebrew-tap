@@ -1,0 +1,80 @@
+# Style, audit, install and test every formula in this tap on the four
+# platforms the Vericto CLI ships for: Linux x86_64 and arm64 (the static musl
+# binaries, so any glibc works) and macOS arm64 and x86_64. The steps are in
+# .github/test-formulae.sh.
+#
+# Formulae land here from the vericto/vericto-cli release workflow
+# (.github/workflows/homebrew-publish.yml there), which pushes the formula to
+# main shortly before the GitHub release is announced; the script waits for
+# the release archives instead of failing on a 404.
+#
+# Runners: always GitHub-hosted. This repository is meant to be public, and a
+# public repository must never be served by the self-hosted vericto-spot runners
+# (vericto-fmw infrastructure/aws-ci-spot-runners/README.md: it is not, and must
+# not be, in their allowed repositories). Linux runs inside the
+# ghcr.io/homebrew/brew image, pinned by digest. While the repository is still
+# private, macOS only runs when started by hand (Actions > tests > Run
+# workflow), to save billed minutes; once public it runs on every push and pull
+# request.
+#
+# Actions are pinned to full commit SHAs, as in vericto/vericto-cli;
+# Dependabot (.github/dependabot.yml) keeps them current.
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # ghcr.io/homebrew/brew:latest on 2026-10-17 (multi-arch index). Bump by hand:
+  # docker buildx imagetools inspect ghcr.io/homebrew/brew:latest
+  BREW_IMAGE: ghcr.io/homebrew/brew@sha256:00b643d72ab0ee27c64e3e552d08c66e1bb5272bdf4ed28964e27aa5764f2503
+
+jobs:
+  linux:
+    name: linux (${{ matrix.arch }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Style, audit, install and test
+        run: docker run --rm -v "$PWD:/tap:ro" "$BREW_IMAGE" bash /tap/.github/test-formulae.sh
+
+  macos:
+    name: macos (${{ matrix.os }})
+    if: github.event_name == 'workflow_dispatch' || github.event.repository.visibility == 'public'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-26, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    steps:
+      # Installs Homebrew if the runner has none and taps this checkout as
+      # vericto/tap.
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@eb02c69dbabdb66ff183c614f4ce7ab3c077592c # 2026.10.12.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Style, audit, install and test
+        run: bash "$(brew --repository vericto/tap)/.github/test-formulae.sh"
