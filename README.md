@@ -77,6 +77,11 @@ pull request: Linux x86_64 and arm64 run always; macOS arm64 and x86_64 run
 when started by hand while this repository is private, and on every push and
 pull request once it is public.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md): what can change here, how to test the
+tap locally, and where formula fixes go.
+
 ## License
 
 The files in this repository (formulae, workflows, documentation) are under
