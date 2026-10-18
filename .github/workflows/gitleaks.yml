@@ -1,8 +1,8 @@
 # Secret scan of the commits a pull request (or a push to main) adds, with
 # gitleaks' built-in rules. Findings are printed with --redact: the log names the
 # file, line and rule, never the value. Same job as the other public vericto repos.
-# Runner: the self-hosted spot runners while the repository is private, GitHub's
-# once it is public, so a pull request from a fork never runs on our hardware.
+# Runner: always GitHub-hosted; this repository is not among the self-hosted spot
+# runners' allowed repositories, and a public one must never be.
 name: Secret scan
 
 on:
@@ -16,7 +16,7 @@ permissions:
 jobs:
   gitleaks:
     name: gitleaks
-    runs-on: ${{ github.event.repository.private && fromJSON(vars.CI_RUNS_ON || '["self-hosted","linux","x64","vericto-spot"]') || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

@@ -8,14 +8,14 @@
 # main shortly before the GitHub release is announced; the script waits for
 # the release archives instead of failing on a 404.
 #
-# Runners, while this repository is private (Actions minutes are billed):
-# - Linux runs on the self-hosted vericto-spot runners, inside the
-#   ghcr.io/homebrew/brew image, pinned by digest.
-# - macOS needs GitHub-hosted runners, so it only runs when started by hand
-#   (Actions > tests > Run workflow).
-# Once the repository is public, Linux moves to GitHub-hosted runners (a public
-# repository must not run pull requests from forks on self-hosted runners)
-# and macOS runs on every push and pull request; both are free there.
+# Runners: always GitHub-hosted. This repository is meant to be public, and a
+# public repository must never be served by the self-hosted vericto-spot runners
+# (vericto-fmw infrastructure/aws-ci-spot-runners/README.md: it is not, and must
+# not be, in their allowed repositories). Linux runs inside the
+# ghcr.io/homebrew/brew image, pinned by digest. While the repository is still
+# private, macOS only runs when started by hand (Actions > tests > Run
+# workflow), to save billed minutes; once public it runs on every push and pull
+# request.
 #
 # Actions are pinned to full commit SHAs, as in vericto/vericto-cli;
 # Dependabot (.github/dependabot.yml) keeps them current.
@@ -46,12 +46,10 @@ jobs:
       matrix:
         include:
           - arch: x86_64
-            self-hosted: ${{ vars.CI_RUNS_ON || '["self-hosted","linux","x64","vericto-spot"]' }}
-            hosted: '"ubuntu-24.04"'
+            runner: ubuntu-24.04
           - arch: arm64
-            self-hosted: ${{ vars.CI_RUNS_ON_ARM64 || '["self-hosted","linux","arm64","vericto-spot"]' }}
-            hosted: '"ubuntu-24.04-arm"'
-    runs-on: ${{ fromJSON(github.event.repository.private && matrix.self-hosted || matrix.hosted) }}
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
     permissions:
       contents: read
     steps:
