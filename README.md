@@ -77,9 +77,21 @@ pull request: Linux x86_64 and arm64 run always; macOS arm64 and x86_64 run
 when started by hand while this repository is private, and on every push and
 pull request once it is public.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md): what can change here, how to test the
+tap locally, and where formula fixes go.
+
 ## License
 
 The files in this repository (formulae, workflows, documentation) are under
 the [BSD 2-Clause License](LICENSE), the license of Homebrew's own formulae.
-The Vericto CLI that the formula installs is under the
-[Elastic License 2.0](https://github.com/vericto/vericto-cli/blob/main/LICENSE).
+The Vericto CLI that the formula installs is a separate program,
+licensed by version: the [Functional Source License, Version 1.1, ALv2 Future
+License](https://github.com/vericto/vericto-cli/blob/main/LICENSE)
+(`FSL-1.1-ALv2`) from 1.10.0, and the Elastic License 2.0 for 1.9.0 and
+earlier. The formula's `license` line says which: vericto-cli's release generates it from the CLI's `Cargo.toml`, so
+it reads `FSL-1.1-ALv2` from the 1.10.0 formula on. See the CLI's
+[LICENSING.md](https://github.com/vericto/vericto-cli/blob/main/LICENSING.md).
+The licenses grant no right to the Vericto name or logo; see
+[TRADEMARKS.md](TRADEMARKS.md).
