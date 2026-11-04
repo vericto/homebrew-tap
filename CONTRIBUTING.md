@@ -74,11 +74,18 @@ or email [security@vericto.com](mailto:security@vericto.com).
 
 The files in this repository are under the [BSD 2-Clause License](LICENSE). The
 Vericto CLI that the formula installs is a separate program,
-licensed by version: the [Functional Source License, Version 1.1, ALv2 Future
-License](https://github.com/vericto/vericto-cli/blob/main/LICENSE)
-(`FSL-1.1-ALv2`) from 1.10.0, and the Elastic License 2.0 for 1.9.0 and
-earlier. The formula's `license` line says which: vericto-cli's release generates it from the CLI's `Cargo.toml`, so
-it reads `FSL-1.1-ALv2` from the 1.10.0 formula on. See the CLI's
+licensed by version. From 2.0.0 it is open source under the [GNU Affero
+General Public License, version 3
+only](https://github.com/vericto/vericto-cli/blob/main/LICENSE)
+(`AGPL-3.0-only`), and free to use in production, including commercially; a
+commercial license from Vericto S.A.S.
+([legal@vericto.com](mailto:legal@vericto.com)) is available for closed or
+embedded use. Earlier releases keep the license they were released with: the
+Functional Source License, Version 1.1, ALv2 Future License (`FSL-1.1-ALv2`)
+for 1.10.0 to 1.13.3, and the Elastic License 2.0 for 1.9.0 and earlier. The
+formula's `license` line says which: vericto-cli's release generates it from
+the CLI's `Cargo.toml`, so it reads `FSL-1.1-ALv2` in the 1.10.0 to 1.13.3
+formulae and `AGPL-3.0-only` from the 2.0.0 formula on. See the CLI's
 [LICENSING.md](https://github.com/vericto/vericto-cli/blob/main/LICENSING.md).
 The licenses grant no right to the Vericto name or logo; see
 [TRADEMARKS.md](TRADEMARKS.md).
