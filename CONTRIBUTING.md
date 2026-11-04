@@ -54,6 +54,7 @@ shortly before the GitHub release is announced.
 - Write commit messages, comments and pull request descriptions in English. The
   formula commits from the CLI release are named `vericto X.Y.Z`.
 - At least one maintainer review (CODEOWNERS requests it).
+- The Contributor License Agreement is signed (`CLA` check, see below).
 
 Pull requests are merged with a merge commit; squash and rebase merges are
 disabled.
@@ -69,6 +70,34 @@ in the CLI's [CHANGELOG](https://github.com/vericto/vericto-cli/blob/main/CHANGE
 
 Do **not** open a public issue for vulnerabilities. See [SECURITY.md](SECURITY.md)
 or email [security@vericto.com](mailto:security@vericto.com).
+
+## Contributor License Agreement
+
+Before a pull request can be merged, every human commit author must sign the
+Vericto Individual Contributor License Agreement, version 1.1
+([CLA index](CLA.md), permanent text [legal/cla/1.1.md](legal/cla/1.1.md)). The
+agreement lets Vericto distribute accepted contributions under the project's
+public license and under separate commercial licenses while the contributor
+keeps copyright.
+
+Read the agreement and post this exact pull-request comment:
+
+```
+I have read the CLA Document and I hereby sign the CLA
+```
+
+The CLA workflow records your GitHub username and numeric account ID,
+repository ID, pull-request number, comment ID, comment timestamp, CLA version
+and SHA-256 document hash in `signatures/v1.1/cla.json` on the
+`cla-signatures` branch. The data and retention are described in
+[CLA_PRIVACY_NOTICE.md](CLA_PRIVACY_NOTICE.md). If the check does not rerun,
+comment `recheck`. A commit whose email is not linked to a GitHub account
+cannot be matched to a signer. Closed pull requests are locked to preserve the
+signature comment.
+
+If an employer, client or other person may own rights in your contribution,
+obtain written authorization and send it to
+[legal@vericto.com](mailto:legal@vericto.com) before submitting.
 
 ## License
 
