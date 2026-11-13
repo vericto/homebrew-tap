@@ -3,22 +3,22 @@ class Vericto < Formula
   homepage "https://vericto.com"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/vericto/vericto-cli/releases/download/v2.1.0/vericto-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "1856aa88cf15da02d0362f9821245d0849b1186e2b8deff46a8232ae1c8e9505"
+      url "https://github.com/vericto/vericto-cli/releases/download/v2.2.0/vericto-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "0286d4c346d85248936b1278322e86b84b60ca57c009ef3a818bd9cfa10a13c3"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/vericto/vericto-cli/releases/download/v2.1.0/vericto-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "27ffbde5c42a6c8a145377bce49b41e532427a4503474d3789d4a204df8badaf"
+      url "https://github.com/vericto/vericto-cli/releases/download/v2.2.0/vericto-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "8565d90c867f01ed6582270ab3a703ea14cb92fea7e7ac32b93147405e699436"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/vericto/vericto-cli/releases/download/v2.1.0/vericto-cli-aarch64-unknown-linux-musl.tar.xz"
-      sha256 "abdbdfd316fd3fe853d94b0f1b38cc080cf695532af2cc46501c59441b9cf33a"
+      url "https://github.com/vericto/vericto-cli/releases/download/v2.2.0/vericto-cli-aarch64-unknown-linux-musl.tar.xz"
+      sha256 "18cdc89a3371e233de59d230fa55007de0fbef0d7dc36aff37414e1400fae019"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/vericto/vericto-cli/releases/download/v2.1.0/vericto-cli-x86_64-unknown-linux-musl.tar.xz"
-      sha256 "8c041e05bc0f2260300f3e987d366f18e0b9fbefaacc089959d53c60f3f37f32"
+      url "https://github.com/vericto/vericto-cli/releases/download/v2.2.0/vericto-cli-x86_64-unknown-linux-musl.tar.xz"
+      sha256 "3fd079a47666ba769ecf860ce9f45b0700b9f65c7c78397c06f610e4a74531e2"
     end
   end
   license "AGPL-3.0-only"
