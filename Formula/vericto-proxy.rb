@@ -3,22 +3,22 @@ class VerictoProxy < Formula
   homepage "https://vericto.com"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/vericto/vericto-proxy/releases/download/v5.0.2/vericto-proxy-aarch64-apple-darwin.tar.xz"
-      sha256 "9285dcd6f10889807a742c2766fced15785f369e6c0756259901076341b6e70f"
+      url "https://github.com/vericto/vericto-proxy/releases/download/v5.2.0/vericto-proxy-aarch64-apple-darwin.tar.xz"
+      sha256 "2f6e1afd0a0d5dc64b1f01c238ee43670bc44dc77e5fc0406873f0dd74005764"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/vericto/vericto-proxy/releases/download/v5.0.2/vericto-proxy-x86_64-apple-darwin.tar.xz"
-      sha256 "03b8be36f75b4825bc07844feb34417793b7ab0ca44b274dc5b50430e3bda102"
+      url "https://github.com/vericto/vericto-proxy/releases/download/v5.2.0/vericto-proxy-x86_64-apple-darwin.tar.xz"
+      sha256 "7c7e136917b64928bddfdda70b521867470a130f6f5b0f86e6e7a8f5cd498485"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/vericto/vericto-proxy/releases/download/v5.0.2/vericto-proxy-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "1e9f571c114a19b6f77ea27a6c0650245a60d0a7d5ef5f143e15d9f1bebc95c0"
+      url "https://github.com/vericto/vericto-proxy/releases/download/v5.2.0/vericto-proxy-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "32d193bdcf17ef48969c06810ddd1c1642238affc7d01ecf4301d205eddfeb22"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/vericto/vericto-proxy/releases/download/v5.0.2/vericto-proxy-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "4189e2e4b224092cf2b6bed778199ceea04d2879d5965f1d0338faba23a42f49"
+      url "https://github.com/vericto/vericto-proxy/releases/download/v5.2.0/vericto-proxy-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "8d490007b24dac5dd1697ff6f8bd8c2486a1ebd6113e707964b9bed1146fd979"
     end
   end
   license "AGPL-3.0-only"
